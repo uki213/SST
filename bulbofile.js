@@ -14,19 +14,19 @@ const rename = require('gulp-rename');
 const prettify = require('gulp-prettify');
 
 // less
-var less = require('gulp-less');
-var cleanCSS = require('gulp-clean-css');
-var sourcemaps = require('gulp-sourcemaps');
-var LessAutoprefix = require('less-plugin-autoprefix');
-var autoprefix = new LessAutoprefix({
+const less = require('gulp-less');
+const cleanCSS = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps');
+const LessAutoprefix = require('less-plugin-autoprefix');
+const autoprefix = new LessAutoprefix({
   browsers: ['last 5 versions']
 });
 
 // sass
-var sass = require('gulp-sass');
+const sass = require('gulp-sass');
 
 // eslint
-var eslint = require('gulp-eslint');
+const eslint = require('gulp-eslint');
 
 // path
 const path = {
