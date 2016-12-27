@@ -1,3 +1,4 @@
+# まだ途中なので使ってはいけない！
 # HTML Template (ejs + less)
 
 ## はじめに
