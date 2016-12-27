@@ -10,12 +10,15 @@
     "scss": "gulp sass",
     "sass": "gulp sass",
     "ejs": "gulp ejs",
-    "lint": "gulp lint"
+    "lint": "eslint ./src"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "bulbo": "^6.3.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.3",
     "gulp-ejs": "^2.1.1",
@@ -30,7 +33,9 @@
     "less-plugin-autoprefix": "^1.5.1",
     "node-notifier": "^4.6.0",
     "rimraf": "^2.4.0",
-    "run-sequence": "^1.1.5",
-    "semistandard": "^9.2.1"
+    "run-sequence": "^1.1.5"
+  },
+  "eslintConfig": {
+    "extends": "google"
   }
 }
