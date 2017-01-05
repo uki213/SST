@@ -1,17 +1,17 @@
 // bulbo
-const bulbo = require('bulbo');
-const asset = bulbo.asset;
+var bulbo = require('bulbo');
+var asset = bulbo.asset;
 
 // commons
-const plumber = require('gulp-plumber');
-const rimraf = require('rimraf');
-const runSequence = require('run-sequence');
-const notifier = require('node-notifier');
+var plumber = require('gulp-plumber');
+// var rimraf = require('rimraf');
+// var runSequence = require('run-sequence');
+var notifier = require('node-notifier');
 
 // ejs
-const ejs = require('gulp-ejs');
-const rename = require('gulp-rename');
-const prettify = require('gulp-prettify');
+var ejs = require('gulp-ejs');
+var rename = require('gulp-rename');
+var prettify = require('gulp-prettify');
 
 // less
 var less = require('gulp-less');
@@ -29,7 +29,7 @@ var sass = require('gulp-sass');
 var eslint = require('gulp-eslint');
 
 // path
-const path = {
+var path = {
   src: {
     js: 'src/**/*.js',
     ejs: 'src/**/*.ejs',
@@ -46,9 +46,7 @@ const path = {
 // ejs
 asset([path.src.ejs, path.excludeFile.ejs])
   .pipe(ejs())
-  .pipe(rename(function (path) {
-    path.extname = '.html';
-  }))
+  .pipe(rename({ extname: '.html' }))
   .pipe(prettify({
     indent_with_tabs: false,
     indent_size: 2,
