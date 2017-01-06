@@ -8,7 +8,7 @@
     "build": "bulbo build",
     "lint": "eslint ./src"
   },
-  "author": "",
+  "author": "Uki_213",
   "license": "MIT",
   "devDependencies": {
     "bulbo": "^6.3.0",
