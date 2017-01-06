@@ -1,17 +1,15 @@
 // bulbo
-var bulbo = require('bulbo');
-var asset = bulbo.asset;
+const bulbo = require('bulbo');
+const asset = bulbo.asset;
 
 // commons
-var plumber = require('gulp-plumber');
-// var rimraf = require('rimraf');
-// var runSequence = require('run-sequence');
-var notifier = require('node-notifier');
+const plumber = require('gulp-plumber');
+const notifier = require('node-notifier');
 
 // ejs
-var ejs = require('gulp-ejs');
-var rename = require('gulp-rename');
-var prettify = require('gulp-prettify');
+const ejs = require('gulp-ejs');
+const rename = require('gulp-rename');
+const prettify = require('gulp-prettify');
 
 // less
 const less = require('gulp-less');
@@ -19,7 +17,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const LessAutoprefix = require('less-plugin-autoprefix');
 const autoprefix = new LessAutoprefix({
-  browsers: ['last 5 versions']
+  browsers: ['last 5 versions'],
 });
 
 // sass
@@ -29,18 +27,18 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 
 // path
-var path = {
+const path = {
   src: {
     js: 'src/**/*.js',
     ejs: 'src/**/*.ejs',
     less: 'src/**/*.less',
-    scss: 'src/**/*.scss'
+    scss: 'src/**/*.scss',
   },
   excludeFile: {
     ejs: '!src/**/_*.ejs',
     less: '!src/**/_*.less',
-    scss: '!src/**/_*.scss'
-  }
+    scss: '!src/**/_*.scss',
+  },
 };
 
 // ejs
@@ -57,23 +55,23 @@ asset([path.src.ejs, path.excludeFile.ejs])
       'cite', 'code', 'dfn', 'em', 'kbd', 'strong', 'samp',
       'time', 'var', 'a', 'bdo', 'br', 'img', 'map', 'object',
       'q', 'span', 'sub', 'sup', 'button', 'input',
-      'label', 'select', 'textarea'
-    ]
+      'label', 'select', 'textarea',
+    ],
   }));
 
 // less
 asset([path.src.less, path.excludeFile.less])
   .pipe(plumber({
-    errorHandler: function (err) {
+    errorHandler(err) {
       console.log(err);
       this.emit('end');
-    }
+    },
   }))
   .pipe(less({
     sourceMap: {
-      sourceMapFileInline: true
+      sourceMapFileInline: true,
     },
-    plugins: [autoprefix]
+    plugins: [autoprefix],
   }))
   .pipe(sourcemaps.init())
   .pipe(cleanCSS())
@@ -83,7 +81,7 @@ asset([path.src.less, path.excludeFile.less])
 asset([path.src.scss, path.excludeFile.scss])
   .pipe(sourcemaps.init())
   .pipe(sass({
-    outputStyle: 'compressed'
+    outputStyle: 'compressed',
   }).on('error', sass.logError))
   .pipe(sourcemaps.write('sourcemaps'));
 
@@ -91,19 +89,19 @@ asset([path.src.scss, path.excludeFile.scss])
 asset(path.src.js)
   .pipe(plumber({
     // エラーをハンドル
-    errorHandler: function (error) {
-      var taskName = 'eslint';
-      var title = '[task]' + taskName + ' ' + error.plugin;
-      var errorMsg = 'error: ' + error.message;
+    errorHandler(error) {
+      const taskName = 'eslint';
+      const title = `[task]${taskName} ${error.plugin}`;
+      const errorMsg = `error: ${error.message}`;
       // ターミナルにエラーを出力
-      console.error(title + '\n' + errorMsg);
+      console.error(`${title}\n${errorMsg}`);
       // エラーを通知
       notifier.notify({
-        title: title,
+        title,
         message: errorMsg,
-        time: 3000
+        time: 3000,
       });
-    }
+    },
   }))
   .pipe(eslint())
   .pipe(eslint.format())

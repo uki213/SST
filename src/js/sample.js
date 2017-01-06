@@ -1,2 +1,6 @@
-var test = 'test';
-return test;
+function test() {
+  const TEST = 'test';
+  return TEST;
+}
+
+test();
