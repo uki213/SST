@@ -6,10 +6,6 @@
   "scripts": {
     "start": "bulbo serve",
     "build": "bulbo build",
-    "less": "gulp less",
-    "scss": "gulp sass",
-    "sass": "gulp sass",
-    "ejs": "gulp ejs",
     "lint": "eslint ./src"
   },
   "author": "",
@@ -19,7 +15,6 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.3",
     "gulp-ejs": "^2.1.1",
     "gulp-eslint": "^3.0.1",
@@ -31,11 +26,6 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-webserver": "^0.9.1",
     "less-plugin-autoprefix": "^1.5.1",
-    "node-notifier": "^4.6.0",
-    "rimraf": "^2.4.0",
-    "run-sequence": "^1.1.5"
-  },
-  "eslintConfig": {
-    "extends": "google"
+    "node-notifier": "^4.6.0"
   }
 }
