@@ -1,3 +1,2 @@
-const aaa = '';
-
-console.log(aaa);
+var test = 'test';
+return test;

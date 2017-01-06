@@ -46,9 +46,7 @@ var global = {
 gulp.task('ejs', function () {
   return gulp.src([global.ejs, global.excludeFile.ejs])
     .pipe(ejs())
-    .pipe(rename(function (path) {
-      path.extname = '.html';
-    }))
+    .pipe(rename({ extname: '.html' }))
     .pipe(prettify({
       indent_with_tabs: false,
       indent_size: 2,
@@ -94,7 +92,7 @@ gulp.task('less-build', function () {
 gulp.task('sass', function () {
   return gulp.src([global.scss, global.excludeFile.scss])
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(sourcemaps.write('sourcemaps'))
     .pipe(gulp.dest(global.dist));
 });
@@ -102,7 +100,7 @@ gulp.task('sass', function () {
 // gulp-scss (Exclusion SOURCEMAP)
 gulp.task('sass-build', function () {
   return gulp.src([global.scss, global.excludeFile.scss])
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(gulp.dest(global.dist));
 });
 
